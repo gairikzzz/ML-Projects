@@ -1,1 +1,6 @@
 ### This folder contains all the files associated with the Cognitare: Round-2 Submissions.
+
+### Note: 
+In the Submissions made, I've used AVG_DOWNHOLE_TEMPERATURE	to make the model, but in the prediction Dataset the AVG_DOWNHOLE_TEMPERATURE is zero in every records. Thus, there was a risk of **Data Leakage**. Data leakage (or leakage) happens when your training data contains information about the target, but similar data will not be available when the model is used for prediction. This leads to high performance on the training set (and possibly even the validation data), but the model will perform poorly in production. In other words, leakage causes a model to look accurate until you start making decisions with the model, and then the model becomes very inaccurate.
+
+To check this ambiguity, I've again created the model with AVG_DP_TUBING as the feature in place of AVG_DOWNHOLE_TEMPERATURE and made the predictions for the Prediction Dataset. Surprisingly, the predictions using both the models gave close results with an accuracy of **88%**. Thus, the risk of Data Leakage considering AVG_DOWNHOLE_TEMPERATURE as a feature is eliminated. Since, the first model had more accuracy, I've chosen that for production. 
