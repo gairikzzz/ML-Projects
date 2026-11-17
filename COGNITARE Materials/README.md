@@ -1,6 +1,20 @@
-### This folder contains all the files associated with the Cognitare: Round-2 Submissions.
+# Cognitare – Round 2 Submission
 
-### Note: 
-In the Submissions made, I've used AVG_DOWNHOLE_TEMPERATURE	to make the model, but in the prediction Dataset the AVG_DOWNHOLE_TEMPERATURE is zero in every records. Thus, there was a risk of **Data Leakage**. Data leakage (or leakage) happens when your training data contains information about the target, but similar data will not be available when the model is used for prediction. This leads to high performance on the training set (and possibly even the validation data), but the model will perform poorly in production. In other words, leakage causes a model to look accurate until you start making decisions with the model, and then the model becomes very inaccurate.
+This folder contains the materials for the Cognitare Round 2 submission, including the notebooks, model workflow, input and test data, and saved model artefact.
 
-To check this ambiguity, I've again created the model with AVG_DP_TUBING as the feature in place of AVG_DOWNHOLE_TEMPERATURE and made the predictions for the Prediction Dataset. Surprisingly, the predictions using both the models gave close results with an accuracy of **88%**. Thus, the risk of Data Leakage considering AVG_DOWNHOLE_TEMPERATURE as a feature is eliminated. Since, the first model had more accuracy, I've chosen that for production. 
+## Modelling note: feature availability and leakage risk
+
+The original model used `AVG_DOWNHOLE_TEMPERATURE`. In the prediction dataset, this feature was zero for every record, raising a concern about whether the feature would be available in a real prediction setting and whether it could introduce data leakage.
+
+As a check, a second model was built using `AVG_DP_TUBING` in place of `AVG_DOWNHOLE_TEMPERATURE`. The two sets of predictions were reported as close, with an accuracy of **88%**. The original submission selected the first model because it had the higher reported accuracy.
+
+This is the rationale recorded in the original submission; the notebooks and data files contain the underlying work and should be consulted when assessing the modelling decision.
+
+## Files
+
+- `COGNITARE_GAIRIKCHAKRABORTY_SUBMISSIONS.ipynb` — notebook submission
+- `COGNITARE_GAIRIKCHAKRABORTY_SUBMISSION - Jupyter Notebook.pdf` — exported submission
+- `ML model workflow.jpeg` — model workflow visual
+- `input_data_quiz.xlsx`, `test_data_quiz.xlsx`, `Test_data_quiz_results.xlsx` — supporting data files
+- `Volve Oilfield.jpg` — supporting image
+- `model.pkl` — saved model artefact
